@@ -19,5 +19,9 @@ namespace BlazorApp_ASTParser.AST;
 
 public enum ErrorSeverity
 {
-    
+    None,
+    Message,
+    Warning,
+    Error,
+    Fatal
 }

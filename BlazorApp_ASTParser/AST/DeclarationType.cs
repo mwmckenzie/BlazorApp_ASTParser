@@ -19,5 +19,11 @@ namespace BlazorApp_ASTParser.AST;
 
 public enum DeclarationType
 {
-    
+    Parameter,
+    Variable,
+    Class,
+    Field,
+    Method,
+    Constructor,
+    Property
 }

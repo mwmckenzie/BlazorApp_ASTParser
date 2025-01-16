@@ -19,5 +19,13 @@ namespace BlazorApp_ASTParser.AST;
 
 public enum ExpressionType
 {
-    
+    Binary,
+    Unary,
+    Identifier,
+    Constant,
+    Reference,
+    MethodCall,
+    Lambda,
+    New,
+    ArrayAccess
 }

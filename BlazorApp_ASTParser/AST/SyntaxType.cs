@@ -1,4 +1,4 @@
-﻿// BlazorApp_ASTParser -- SyntaxCategory.cs
+﻿// BlazorApp_ASTParser -- SyntaxType.cs
 // 
 // Copyright (C) 2025 Matthew W. McKenzie and Kenz LLC
 // 
@@ -17,7 +17,7 @@
 
 namespace BlazorApp_ASTParser.AST;
 
-public enum SyntaxCategory
+public enum SyntaxType
 {
     Expression,
     Statement,

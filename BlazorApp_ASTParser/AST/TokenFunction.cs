@@ -19,5 +19,20 @@ namespace BlazorApp_ASTParser.AST;
 
 public enum TokenFunction
 {
-    
+    Unknown,
+    Meta,
+    WhiteSpace,
+    Comment,
+
+    Constant,
+    Identifier,
+    Grouping,
+    Punctuation,
+
+    OperatorBool,
+    OperatorCalculation,
+    OperatorInPlace,
+    OperatorIterator,
+
+    Invalid
 }

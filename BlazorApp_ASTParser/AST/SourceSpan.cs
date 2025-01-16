@@ -17,6 +17,46 @@
 
 namespace BlazorApp_ASTParser.AST;
 
-public struct SourceSpan
+public readonly struct SourceSpan(SourcePosition start, SourcePosition end) : IEquatable<SourceSpan>
 {
+    public SourcePosition End => end;
+
+    public int Length => end.Index - start.Index;
+
+    public SourcePosition Start => start;
+
+    public static bool operator !=(SourceSpan left, SourceSpan right)
+    {
+        return !left.Equals(right);
+    }
+
+    public static bool operator ==(SourceSpan left, SourceSpan right)
+    {
+        return left.Equals(right);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is SourceSpan span)
+        {
+            return Equals(span);
+        }
+
+        return base.Equals(obj);
+    }
+
+    public bool Equals(SourceSpan other)
+    {
+        return other.Start == Start && other.End == End;
+    }
+
+    public override int GetHashCode()
+    {
+        return 0x509CE ^ Start.GetHashCode() ^ End.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return $"Line: {start.Line} | Col: {start.Column} | Len: {Length}";
+    }
 }

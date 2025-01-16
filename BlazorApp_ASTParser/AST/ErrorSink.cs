@@ -15,34 +15,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using System.Collections;
 using MudBlazor;
 
 namespace BlazorApp_ASTParser.AST;
 
-public class ErrorSink
+public class ErrorSink : IEnumerable<ErrorDetails>
 {
-    private List<ErrorEntry> _errors;
+    private readonly List<ErrorDetails> _errors = new();
 
-    public IEnumerable<ErrorEntry> Errors => _errors.AsReadOnly();
+    public IEnumerable<ErrorDetails> Errors => _errors;
 
     public bool HasErrors => _errors.Count > 0;
 
-    public ErrorSink()
-    {
-        _errors = new List<ErrorEntry>();
-    }
-
-    public void AddError(string message, SourceCode sourceCode, Severity severity, SourceSpan span)
-    {
-        _errors.Add(new ErrorEntry(message, sourceCode.GetLines(span.Start.Line, span.End.Line), severity, span));
-    }
-
-    public void Clear()
-    {
-        _errors.Clear();
-    }
-
-    public IEnumerator<ErrorEntry> GetEnumerator()
+    public IEnumerator<ErrorDetails> GetEnumerator()
     {
         return _errors.GetEnumerator();
     }
@@ -50,5 +36,15 @@ public class ErrorSink
     IEnumerator IEnumerable.GetEnumerator()
     {
         return _errors.GetEnumerator();
+    }
+
+    public void AddError(string message, SourceCode sourceCode, ErrorSeverity severity, SourceSpan span)
+    {
+        _errors.Add(new ErrorDetails(message, sourceCode.GetLines(span.Start.Line, span.End.Line), severity, span));
+    }
+
+    public void Clear()
+    {
+        _errors.Clear();
     }
 }

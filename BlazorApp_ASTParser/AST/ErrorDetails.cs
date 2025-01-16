@@ -1,4 +1,4 @@
-// BlazorApp_ASTParser -- ErrorEntry.cs
+// BlazorApp_ASTParser -- ErrorDetails.cs
 // 
 // Copyright (C) 2025 Matthew W. McKenzie and Kenz LLC
 // 
@@ -19,13 +19,13 @@ using MudBlazor;
 
 namespace BlazorApp_ASTParser.AST;
 
-public struct ErrorEntry(string message, string[] lines, Severity severity, SourceSpan span)
+public struct ErrorDetails(string message, string[] lines, ErrorSeverity severity, SourceSpan span)
 {
     public string[] Lines { get; } = lines;
 
     public string Message { get; } = message;
 
-    public Severity Severity { get; } = severity;
+    public ErrorSeverity Severity { get; } = severity;
 
     public SourceSpan Span { get; } = span;
 }

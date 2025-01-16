@@ -19,5 +19,15 @@ namespace BlazorApp_ASTParser.AST;
 
 public enum StatementType
 {
-    
+    Block,
+    While,
+    If,
+    Else,
+    Switch,
+    Case,
+    Empty,
+    Break,
+    Continue,
+    For,
+    Return
 }

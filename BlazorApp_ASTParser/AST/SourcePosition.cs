@@ -17,7 +17,41 @@
 
 namespace BlazorApp_ASTParser.AST;
 
-public struct SourcePosition
+public readonly struct SourcePosition(int index, int line, int column) : IEquatable<SourcePosition>
 {
-    
+    public int Column => column;
+
+    public int Index => index;
+
+    public int Line => line;
+
+    public static bool operator !=(SourcePosition left, SourcePosition right)
+    {
+        return !left.Equals(right);
+    }
+
+    public static bool operator ==(SourcePosition left, SourcePosition right)
+    {
+        return left.Equals(right);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is SourcePosition position)
+        {
+            return Equals(position);
+        }
+
+        return base.Equals(obj);
+    }
+
+    public bool Equals(SourcePosition other)
+    {
+        return other.GetHashCode() == GetHashCode();
+    }
+
+    public override int GetHashCode()
+    {
+        return 0xB1679EE ^ Index ^ Line ^ Column;
+    }
 }

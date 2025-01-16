@@ -17,7 +17,16 @@
 
 namespace BlazorApp_ASTParser.AST;
 
-public class SyntaxNode
+public abstract class SyntaxNode
 {
-    
+    protected SyntaxNode(SourceSpan span)
+    {
+        SourceSpan = span;
+    }
+
+    public abstract SyntaxType SyntaxType { get; }
+
+    //public abstract Syntax Kind { get; }
+
+    public SourceSpan SourceSpan { get; }
 }
