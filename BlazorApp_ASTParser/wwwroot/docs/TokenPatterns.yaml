@@ -1,0 +1,91 @@
+
+EmptyQuoteLiteral: 
+  - And:
+    - Token: QuotationMarkChar
+    - Token: QuotationMarkChar
+  
+OpenedQuoteLiteral: 
+  - And:
+    - Or:
+      - Token: QuotationMarkChar
+      - Token: OpenedQuoteLiteral
+    - Not:
+      - Token: QuotationMarkChar
+    
+ClosedQuoteLiteral: 
+  - And:
+      - Token: OpenedQuoteLiteral
+      - Token: QuotationMarkChar
+
+StringLiteral: 
+  - Or:
+    - Token: EmptyQuoteLiteral
+    - Token: ClosedQuoteLiteral
+    
+UnclosedStringError:
+  - Or:
+    - Token: OpenedQuoteLiteral
+    - Token: QuotationMarkChar
+  
+WhiteSpaceLiteral: 
+  - Or: 
+    - And:
+      - Token: WhiteSpaceLiteral
+      - Token: WhiteSpaceLiteral
+    - Token: SeparatorChar
+
+
+CharSequenceLiteral: OneOrMoreOfType(CharLiteral)
+
+# CharSequenceLiteral:
+
+
+# OperatorLiteral:
+# MathOperatorLiteral:
+# SingleCharMathOperatorLiteral:
+PlusSignLiteral: PlusSignChar
+MinusSignLiteral: MinusSignChar
+MultiplicationSignLiteral: MultiplicationSignChar
+DivisionSignLiteral: DivisionSignChar
+ModuloSignLiteral: ModuloSignChar
+EqualsSignLiteral: EqualsSignChar
+BitwiseXORLiteral: BitwiseXORChar
+TildeLiteral: TildeChar
+LessThanSignLiteral: LessThanSignChar
+GreaterThanSignLiteral: GreaterThanSignChar
+LogicalNOTLiteral: LogicalNOTChar
+LogicalANDLiteral: LogicalANDChar
+LogicalORLiteral: LogicalORChar
+
+# OperatorLiteral:
+# MathOperatorLiteral:
+# CompoundMathOperatorLiteral:
+PlusEqualsSignLiteral: [PlusSignLiteral, EqualsSignLiteral]
+MinusEqualsSignLiteral: [MinusSignLiteral, EqualsSignLiteral]
+MultiplyEqualsSignLiteral: [MultiplicationSignLiteral, EqualsSignLiteral]
+DivideEqualsSignLiteral: [DivisionSignLiteral, EqualsSignLiteral]
+ModuloEqualsSignLiteral: [ModuloSignLiteral, EqualsSignLiteral]
+LeftShiftLiteral: [LessThanSignLiteral, LessThanSignLiteral]
+RightShiftLiteral: [GreaterThanSignLiteral, GreaterThanSignLiteral]
+DoubleEqualsSignLiteral: [EqualsSignLiteral, EqualsSignLiteral]
+NotEqualsSignLiteral: [LogicalNOTLiteral, EqualsSignLiteral]
+LessThanOrEqualsLiteral: [LessThanSignLiteral, EqualsSignLiteral]
+GreaterThanOrEqualsLiteral: [GreaterThanSignLiteral, EqualsSignLiteral]
+LogicalANDCompoundLiteral: [LogicalANDLiteral, LogicalANDLiteral]
+LogicalORCompoundLiteral: [LogicalORLiteral, LogicalORLiteral]
+
+
+
+IntegerLiteral: OnOrMoreOfType(NumberChar)
+
+FloatLiteral: [IntegerLiteral, PeriodChar, IntegerLiteral]
+
+WordLiteral: OneOrMoreOfType(LetterChar)
+CodeWordLiteral: [Letter, OneOrMoreOfType(AlphaNumericChar)]
+
+# BooleanLiteral
+TrueLiteral: [LowerT, LowerR, LowerU, LowerE]
+FalseLiteral: [LowerF, LowerA, LowerL, LowerS, LowerE]
+
+NullLiteral: [LowerN, LowerU, LowerL, LowerL]
+

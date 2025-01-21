@@ -1,0 +1,270 @@
+[{"name": "space", "value": " "}, 
+  {"name": "forwardSlash", "value": "\\"}, 
+  {"name": "backSlash", "value": "/"}, 
+  {"name": "quote", "value": "\""},
+  {"name": "colon", "value": ":"},
+  {"name": "semicolon", "value": ";"},
+  {"name": "period", "value": "."},
+  {"name": "comma", "value": ","},
+  {"name": "asterisk", "value": "*"},
+{"name": "plus", "value": "+"},
+{"name": "minus", "value": "-"},
+{"name": "equals", "value": "="},
+{"name": "ampersand", "value": "&"},
+{"name": "caret", "value": "^"},
+{"name": "percent", "value": "%"},
+{"name": "hash", "value": "#"},
+{"name": "exclamation", "value": "!"},
+{"name": "tilde", "value": "~"},
+{"name": "pipe", "value": "|"},
+{"name": "dollar", "value": "$"},
+{"name": "at", "value": "@"},
+{"name": "underscore", "value": "_"},
+  {
+    "name": "A",
+    "value": "A"
+  },
+  {
+    "name": "B",
+    "value": "B"
+  },
+  {
+    "name": "C",
+    "value": "C"
+  },
+  {
+    "name": "D",
+    "value": "D"
+  },
+  {
+    "name": "E",
+    "value": "E"
+  },
+  {
+    "name": "F",
+    "value": "F"
+  },
+  {
+    "name": "G",
+    "value": "G"
+  },
+  {
+    "name": "H",
+    "value": "H"
+  },
+  {
+    "name": "I",
+    "value": "I"
+  },
+  {
+    "name": "J",
+    "value": "J"
+  },
+  {
+    "name": "K",
+    "value": "K"
+  },
+  {
+    "name": "L",
+    "value": "L"
+  },
+  {
+    "name": "M",
+    "value": "M"
+  },
+  {
+    "name": "N",
+    "value": "N"
+  },
+  {
+    "name": "O",
+    "value": "O"
+  },
+  {
+    "name": "P",
+    "value": "P"
+  },
+  {
+    "name": "Q",
+    "value": "Q"
+  },
+  {
+    "name": "R",
+    "value": "R"
+  },
+  {
+    "name": "S",
+    "value": "S"
+  },
+  {
+    "name": "T",
+    "value": "T"
+  },
+  {
+    "name": "U",
+    "value": "U"
+  },
+  {
+    "name": "V",
+    "value": "V"
+  },
+  {
+    "name": "W",
+    "value": "W"
+  },
+  {
+    "name": "X",
+    "value": "X"
+  },
+  {
+    "name": "Y",
+    "value": "Y"
+  },
+  {
+    "name": "Z",
+    "value": "Z"
+  },
+  {
+    "name": "a",
+    "value": "a"
+  },
+  {
+    "name": "b",
+    "value": "b"
+  },
+  {
+    "name": "c",
+    "value": "c"
+  },
+  {
+    "name": "d",
+    "value": "d"
+  },
+  {
+    "name": "e",
+    "value": "e"
+  },
+  {
+    "name": "f",
+    "value": "f"
+  },
+  {
+    "name": "g",
+    "value": "g"
+  },
+  {
+    "name": "h",
+    "value": "h"
+  },
+  {
+    "name": "i",
+    "value": "i"
+  },
+  {
+    "name": "j",
+    "value": "j"
+  },
+  {
+    "name": "k",
+    "value": "k"
+  },
+  {
+    "name": "l",
+    "value": "l"
+  },
+  {
+    "name": "m",
+    "value": "m"
+  },
+  {
+    "name": "n",
+    "value": "n"
+  },
+  {
+    "name": "o",
+    "value": "o"
+  },
+  {
+    "name": "p",
+    "value": "p"
+  },
+  {
+    "name": "q",
+    "value": "q"
+  },
+  {
+    "name": "r",
+    "value": "r"
+  },
+  {
+    "name": "s",
+    "value": "s"
+  },
+  {
+    "name": "t",
+    "value": "t"
+  },
+  {
+    "name": "u",
+    "value": "u"
+  },
+  {
+    "name": "v",
+    "value": "v"
+  },
+  {
+    "name": "w",
+    "value": "w"
+  },
+  {
+    "name": "x",
+    "value": "x"
+  },
+  {
+    "name": "y",
+    "value": "y"
+  },
+  {
+    "name": "z",
+    "value": "z"
+  },
+  {
+    "name": "0",
+    "value": "0"
+  },
+  {
+    "name": "1",
+    "value": "1"
+  },
+  {
+    "name": "2",
+    "value": "2"
+  },
+  {
+    "name": "3",
+    "value": "3"
+  },
+  {
+    "name": "4",
+    "value": "4"
+  },
+  {
+    "name": "5",
+    "value": "5"
+  },
+  {
+    "name": "6",
+    "value": "6"
+  },
+  {
+    "name": "7",
+    "value": "7"
+  },
+  {
+    "name": "8",
+    "value": "8"
+  },
+  {
+    "name": "9",
+    "value": "9"}
+]

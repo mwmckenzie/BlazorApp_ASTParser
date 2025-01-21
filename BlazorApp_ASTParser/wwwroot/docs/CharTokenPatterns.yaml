@@ -1,0 +1,267 @@
+# CharLiteral
+# LetterChar
+# UppercaseLetterChar
+UpperA: "A"
+UpperB: "B"
+UpperC: "C"
+UpperD: "D"
+UpperE: "E"
+UpperF: "F"
+UpperG: "G"
+UpperH: "H"
+UpperI: "I"
+UpperJ: "J"
+UpperK: "K"
+UpperL: "L"
+UpperM: "M"
+UpperN: "N"
+UpperO: "O"
+UpperP: "P"
+UpperQ: "Q"
+UpperR: "R"
+UpperS: "S"
+UpperT: "T"
+UpperU: "U"
+UpperV: "V"
+UpperW: "W"
+UpperX: "X"
+UpperY: "Y"
+UpperZ: "Z"
+
+# CharLiteral
+# LowercaseLetterChar:
+LowerA: "a"
+LowerB: "b"
+LowerC: "c"
+LowerD: "d"
+LowerE: "e"
+LowerF: "f"
+LowerG: "g"
+LowerH: "h"
+LowerI: "i"
+LowerJ: "j"
+LowerK: "k"
+LowerL: "l"
+LowerM: "m"
+LowerN: "n"
+LowerO: "o"
+LowerP: "p"
+LowerQ: "q"
+LowerR: "r"
+LowerS: "s"
+LowerT: "t"
+LowerU: "u"
+LowerV: "v"
+LowerW: "w"
+LowerX: "x"
+LowerY: "y"
+LowerZ: "z"
+
+# CharLiteral
+#TitlecaseLetterChar: [ǅ, ǲ, Ǳ]
+
+# CharLiteral
+#ModifierLetterChar: [ʰ, ʿ, ˈ]
+
+# CharLiteral
+# OtherLetterChar: [𐓐, 𐓓, 𐓘]
+
+# CharLiteral
+# NonSpacingMarkChar: [◌́, ◌̀, ◌̃]
+
+# CharLiteral
+# SpacingCombiningMarkChar: [◌̄, ◌̆, ◌̈]
+
+# CharLiteral
+# EnclosingMarkChar: [◌⃝, ◌⃞, ◌⃤]
+
+# CharLiteral
+# NumberChar
+# DecimalDigitNumberChar:
+Number0: "0"
+Number1: "1"
+Number2: "2"
+Number3: "3"
+Number4: "4"
+Number5: "5"
+Number6: "6"
+Number7: "7"
+Number8: "8"
+Number9: "9"
+
+# CharLiteral
+# NumberChar
+# LetterNumberChar: [Ⅰ, Ⅷ, Ⅽ]
+
+# CharLiteral
+# NumberChar
+#OtherNumberChar: [ↀ, ⓵, ⑩]
+
+# CharLiteral
+# SeparatorChar
+# SpaceSeparatorChar:
+SpaceChar: " "
+NoBreakSpaceChar: "\u00A0"  # Non-breaking space
+EnQuadChar: "\u2000"  # En quad
+EmQuadChar: "\u2001"  # Em quad
+EnSpaceChar: "\u2002"  # En space
+EmSpaceChar: "\u2003"  # Em space
+ThreePerEmSpaceChar: "\u2004"  # Three-per-em space
+FourPerEmSpaceChar: "\u2005"  # Four-per-em space
+SixPerEmSpaceChar: "\u2006"  # Six-per-em space
+FigureSpaceChar: "\u2007"  # Figure space
+PunctuationSpaceChar: "\u2008"  # Punctuation space
+ThinSpaceChar: "\u2009"  # Thin space
+HairSpaceChar: "\u200A"  # Hair space
+MediumMathematicalSpaceChar: "\u205F"  # Medium mathematical space
+IdeographicSpaceChar: "\u3000"  # Ideographic space
+
+# CharLiteral
+# SeparatorChar
+# LineSeparatorChar:
+LineSeparatorChar: "\u2028"  # Line separator
+UnixLineFeedChar: "\n"  # Unix LF
+WindowsCarriageReturnChar: "\r\n"  # Windows CRLF
+MacClassicLineFeedChar: "\r"  # Mac classic LF
+
+# CharLiteral
+# SeparatorChar
+# ParagraphSeparatorChar:
+ParagraphSeparatorChar: "\u2029"  # Paragraph separator
+HTMLParagraphBreakChar: "<p>"  # HTML paragraph break
+
+# ControlChar:
+NullChar: "\u0000"  # Null character
+StartOfHeadingChar: "\u0001"  # Start of heading
+StartOfTextChar: "\u0002"  # Start of text
+EndOfTextChar: "\u0003"  # End of text
+EndOfTransmissionChar: "\u0004"  # End of transmission
+EnquiryChar: "\u0005"  # Enquiry
+AcknowledgeChar: "\u0006"  # Acknowledge
+BellChar: "\u0007"  # Bell
+BackspaceChar: "\u0008"  # Backspace
+TabChar: "\u0009"  # Horizontal tab
+VerticalTabChar: "\u000B"  # Vertical tab
+FormFeedChar: "\u000C"  # Form feed
+EscapeChar: "\u001B"  # Escape
+
+# FormatChar:
+ZeroWidthSpaceChar: "\u200B"  # Zero-width space
+ZeroWidthNonJoinerChar: "\u200C"  # Zero-width non-joiner
+ZeroWidthJoinerChar: "\u200D"  # Zero-width joiner
+WordJoinerChar: "\u2060"  # Word joiner
+LeftToRightMarkChar: "\u200E"  # Left-to-right mark
+RightToLeftMarkChar: "\u200F"  # Right-to-left mark
+LeftToRightEmbeddingChar: "\u202A"  # Left-to-right embedding
+RightToLeftEmbeddingChar: "\u202B"  # Right-to-left embedding
+LeftToRightOverrideChar: "\u202D"  # Left-to-right override
+RightToLeftOverrideChar: "\u202E"  # Right-to-left override
+PopDirectionalFormattingChar: "\u202C"  # Pop directional formatting
+InvisibleSeparatorChar: "\u2063"  # Invisible separator
+InvisiblePlusChar: "\u2064"  # Invisible plus
+
+# SurrogateChar:
+#GrinningFaceEmojiChar: "\uD83D\uDE00"
+#GlobeShowingEuropeAfricaEmojiChar: "\uD83C\uDF0D"
+#DogFaceEmojiChar: "\uD83D\uDC36"
+
+# PrivateUseChar:
+#PrivateUseChar1: U+E000
+#PrivateUseChar2: U+F8FF
+#PrivateUseChar3: U+10FFFF
+
+# ConnectorPunctuationChar:
+UnderscoreChar: "_"
+HebrewPunctuationMaqqefChar: "־"
+UndertieChar: "‿"
+SpaceConnectorChar: "⁀"
+
+# DashPunctuationChar:
+HyphenMinusChar: "-"
+EnDashChar: "–"
+EmDashChar: "—"
+FigureDashChar: "‒"
+HorizontalBarChar: "―"
+
+# OpenPunctuationChar:
+LeftParenthesisChar: "("
+LeftSquareBracketChar: "["
+LeftCurlyBraceChar: "{"
+LeftAngleBracketChar: "〈"
+LeftDoubleAngleBracketChar: "«"
+
+# ClosePunctuationChar:
+RightParenthesisChar: ")"
+RightSquareBracketChar: "]"
+RightCurlyBraceChar: "}"
+RightAngleBracketChar: "〉"
+RightDoubleAngleBracketChar: "»"
+
+# InitialQuotePunctuationChar:
+LeftDoubleQuotationMarkChar: "“"
+LeftSingleQuotationMarkChar: "‘"
+ReversedDoublePrimeQuotationMarkChar: "‶"
+LowDoubleQuotationMarkChar: "„"
+LowSingleQuotationMarkChar: "‚"
+
+# FinalQuotePunctuationChar:
+RightDoubleQuotationMarkChar: "”"
+RightSingleQuotationMarkChar: "’"
+DoublePrimeQuotationMarkChar: "″"
+HighReversedDoubleQuotationMarkChar: "‷"
+HighReversedSingleQuotationMarkChar: "‸"
+
+# OtherPunctuationChar:
+ExclamationMarkChar: "!"
+QuestionMarkChar: "?"
+PeriodChar: "."
+EllipsisChar: "…"
+MiddleDotChar: "·"
+InterrobangChar: "‽"
+BulletChar: "•"
+QuotationMarkChar: '"'
+ApostropheChar: "'"
+
+# MathSymbolChar:
+PlusSignChar: "+"
+MinusSignChar: "-"
+MultiplicationSignChar: "×"
+DivisionSignChar: "÷"
+EqualSignChar: "="
+NotEqualSignChar: "≠"
+GreaterThanSignChar: ">"
+LessThanSignChar: "<"
+GreaterThanOrEqualSignChar: "≥"
+LessThanOrEqualSignChar: "≤"
+
+# CurrencySymbolChar:
+DollarSignChar: "$"
+EuroSignChar: "€"
+PoundSignChar: "£"
+YenSignChar: "¥"
+IndianRupeeSignChar: "₹"
+BitcoinSignChar: "₿"
+CentSignChar: "¢"
+KoreanWonSignChar: "₩"
+
+# ModifierSymbolChar:
+CircumflexAccentChar: "^"
+AcuteAccentChar: "´"
+GraveAccentChar: "`"
+TildeChar: "~"
+MacronChar: "¯"
+OverlineChar: "‾"
+BreveChar: "˘"
+DotAboveChar: "˙"
+RingAboveChar: "˚"
+
+# OtherSymbolChar:
+AtSignChar: "@"
+HashSignChar: "#"
+AmpersandChar: "&"
+PercentSignChar: "%"
+StarChar: "★"
+HeartChar: "♥"
+MusicNoteChar: "♪"
+CheckMarkChar: "✓"
+CrossMarkChar: "✗"

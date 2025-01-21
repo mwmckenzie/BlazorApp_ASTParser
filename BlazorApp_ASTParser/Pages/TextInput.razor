@@ -1,0 +1,394 @@
+﻿@page "/TextInput"
+@using BlazorApp_ASTParser.GenericLanguagePrototype
+@using BlazorApp_ASTParser.Views.GenericLangPrototype
+@using MudBlazor
+@using BlazorApp_ASTParser.Components.TextBlocks
+@using BlazorApp_ASTParser.Taxonomy
+@inject HttpClient http
+
+<MudText Typo="Typo.h2">Enter Text To See Syntax Parsing Results</MudText>
+
+<MudTextField T="string" 
+              Label="Outlined" 
+              Variant="Variant.Outlined"
+              Immediate="true"
+              AutoGrow="true"
+              Lines="3" 
+              @bind-Value="@textInputData.InputValue"/>
+
+<MudCard class="mt-4">
+    <MudCardContent>
+        <MudTextField T="string"
+                      ReadOnly="true"
+                      Label="Input Text From Property"
+                      Variant="Variant.Text"
+                      Immediate="true"
+                      AutoGrow="true"
+                      Lines="3"
+                      @bind-Text="@textInputData.InputValue" />
+        
+    </MudCardContent>
+</MudCard>
+
+
+
+<MudCard class="mt-4">
+    <MudCardContent>
+        <MudTextField T="string"
+                      ReadOnly="true"
+                      Label="Input Text Updated Via Event"
+                      Variant="Variant.Text"
+                      Immediate="true"
+                      AutoGrow="true"
+                      Lines="3"
+                      @bind-Text="@Text" />
+
+    </MudCardContent>
+</MudCard>
+
+
+<MudPaper Elevation="1" class="ma-4">
+    @if (_charTypesFromYaml is not null)
+    {
+        foreach (var charType in _charTypesFromYaml)
+        {
+
+            <MudElement HtmlTag="a"
+                        Class="ms-1"
+                        href="https://github.com/MudBlazor/MudBlazor"
+                        target="blank"
+                        rel="noopener noreferrer">
+                @charType
+            </MudElement>
+        }
+    }
+    else
+    {
+        <MudElement>Nothing To See Here!</MudElement>
+    }
+</MudPaper>
+
+<MudPaper Elevation="1" class="ma-4">
+    @if (parsedSymbols is not null)
+    {
+        foreach (var symbol in parsedSymbols)
+        {
+            var color = symbol.name switch
+            {
+                "space" => "background-color:cyan",
+                "exclamation" => "color:red",
+                "dollar" => "color:blue",
+                "hash" => "color:purple; background-color:grey",
+                _ => "color:green"
+            };
+
+            var text = symbol.name == "space" ? 'S' : symbol.value;
+
+            <MudElement HtmlTag="a"
+                        Class="ms-0"
+                        Style=@color
+                        href="https://github.com/MudBlazor/MudBlazor"
+                        target="blank"
+                        rel="noopener noreferrer">
+                @text
+            </MudElement>
+        }
+    }
+    else
+    {
+        <MudElement>Nothing To See Here!</MudElement>
+    }
+</MudPaper>
+
+<MudPaper Elevation="1" class="ma-4">
+    @if (charInfoList is not null)
+    {
+        var view = new CharInfoView();
+        
+        foreach (var charInfo in charInfoList)
+        {
+            var model = view.CreateTextElementViewModel(charInfo);
+            <TextElement text=@model.text styleAttribText=@model.styleAttribText classText=@model.classText />
+            
+        }
+    }
+</MudPaper>
+
+
+@code {
+
+    public class TextInputData
+    {
+        public Action<string>? OnInputValueChanged;
+
+        private string _inputValue = "";
+        public string InputValue
+        {
+            get => _inputValue;
+            set
+            {
+                if (value == _inputValue) return;
+                _inputValue = value;
+                OnInputValueChanged?.Invoke(value);
+            }
+        }
+    }
+
+    public struct Symbol(string name, char value) : IEquatable<Symbol>
+    {
+        public static readonly Symbol Unknown = new Symbol("unknown", Char.MaxValue);
+        
+        public string name { get; set; } = name;
+        public char value { get; set; } = value;
+
+
+        public bool Equals(Symbol? other)
+        {
+            return other?.name == name;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Symbol other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return name.GetHashCode() ^ value.GetHashCode();
+        }
+
+        public static bool operator ==(Symbol? left, Symbol? right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Symbol? left, Symbol? right)
+        {
+            return !Equals(left, right);
+        }
+
+        public bool Equals(Symbol other)
+        {
+            return other.name == name;
+        }
+    }
+
+    public class SymbolPattern(Token token, IEnumerable<Symbol> symbols) : IEquatable<SymbolPattern>
+    {
+        public readonly Token token = token;
+        private List<Symbol> _symbols = symbols.ToList();
+
+        public bool Equals(SymbolPattern? other)
+        {
+            if (other is null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return symbols.Equals(other.token);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((SymbolPattern)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return token.GetHashCode();
+        }
+
+        public static bool operator ==(SymbolPattern? left, SymbolPattern? right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(SymbolPattern? left, SymbolPattern? right)
+        {
+            return !Equals(left, right);
+        }
+    }
+
+    public class TokenPattern(IEnumerable<Token> tokens) : IEquatable<TokenPattern>
+    {
+        private List<Token> _tokens = tokens.ToList();
+
+        public bool Equals(TokenPattern? other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((TokenPattern)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool operator ==(TokenPattern? left, TokenPattern? right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(TokenPattern? left, TokenPattern? right)
+        {
+            return !Equals(left, right);
+        }
+    }
+
+    public class Token(string name, TokenPattern pattern) : IEquatable<Token>
+    {
+        public string name = name;
+        public TokenPattern pattern = pattern;
+
+        public bool Equals()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((Token)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return pattern.GetHashCode();
+        }
+
+        public static bool operator ==(Token left, Token right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Token left, Token right)
+        {
+            return !left.Equals(right);
+        }
+
+        public bool Equals(Token? other)
+        {
+            if (other is null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return pattern.Equals(other.pattern);
+        }
+    }
+
+    public class SymbolParser()
+    {
+        private Dictionary<char, Symbol> charToSymbolDict = new();
+
+        public void Add(Symbol symbol)
+        {
+            charToSymbolDict[symbol.value] = symbol;
+        }
+        
+        public List<Symbol> ParseSource(string source)
+        {
+            var symbolList = new List<Symbol>();
+            foreach (var t in source)
+            {
+                var next = charToSymbolDict.TryGetValue(t, out var value) ? value : Symbol.Unknown;
+                symbolList.Add(next);
+            }
+
+            return symbolList;
+        }
+    }
+
+    public TextInputData textInputData { get; set; } = new() { InputValue = "Put It Here!"};
+    
+    public string Text { get; set; } = "????";
+
+    public List<Symbol>? symbols { get; set; }
+    public SymbolParser symbolParser { get; set; } = new();
+    
+    public List<Symbol>? parsedSymbols { get; set; }
+    
+    public List<CharInfo> charInfoList { get; set; }
+
+    private CharParser _charParser = new CharParser();
+
+    private List<string> _charTypesFromYaml = new List<string>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        const string fileUrl = "data/symbols.json";
+        symbols = await http.GetFromJsonAsync<List<Symbol>>(fileUrl);
+
+        if (symbols is null) return;
+
+        foreach (var symbol in symbols)
+        {
+            symbolParser.Add(symbol);
+        }
+
+        const string yamlFileUrl = "docs/CharTokenPatterns.yaml";
+        
+        var yamlContent = await http.GetStringAsync(yamlFileUrl);
+        
+        //Console.Write(yamlContent);
+        
+        await YamlReader.ReadYaml(yamlContent);
+
+        await TestTaxonomyService();
+    }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        textInputData.OnInputValueChanged += OnInputValueChanged;
+        
+    }
+
+    private void OnInputValueChanged(string updatedTextInput)
+    {
+        Text = updatedTextInput;
+        
+        parsedSymbols = symbolParser.ParseSource(updatedTextInput);
+        
+        charInfoList = _charParser.Parse(updatedTextInput);
+        
+        _charTypesFromYaml.Clear();
+
+        foreach (var textChar in updatedTextInput)
+        {
+            _charTypesFromYaml.Add(YamlReader.GetKeyFromChar(textChar));
+        }
+    }
+
+    private async Task TestTaxonomyService()
+    {
+        const string yamlFileUrl = "docs/TaxonomyIsA.yaml";
+        var yamlContent = await http.GetStringAsync(yamlFileUrl);
+        
+        // Create the service and load the taxonomy
+        var service = TaxonomyService.LoadFromYaml(yamlContent);
+
+        // Example usage: Get ancestors
+        var ancestors = service.GetAncestors("MathOperatorLiteral");
+        if (ancestors != null)
+        {
+            Console.WriteLine("Ancestors of MathOperatorLiteral: " + string.Join(" -> ", ancestors));
+        }
+        else
+        {
+            Console.WriteLine("Node not found.");
+        }
+
+        // Example usage: Walk the tree
+        Console.WriteLine("Tree nodes:");
+        service.WalkTree(node => Console.WriteLine(node.Name));
+    }
+
+}

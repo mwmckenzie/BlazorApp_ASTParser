@@ -1,0 +1,305 @@
+Token:
+  Literal:
+    
+    CharSequenceLiteral:
+      Pattern: AllTypeOf(CharLiteral)
+      
+      WhiteSpaceLiteral:
+        Pattern: OnOrMoreOfType(SeparatorChar)
+        
+      OperatorLiteral:
+        Pattern: OnOrMoreOfType(SeparatorChar)
+          
+        MathOperatorLiteral:
+          
+          # Single Character Literals
+          PlusSignLiteral:
+            Pattern: PlusSignChar
+          MinusSignLiteral:
+            Pattern: MinusSignChar
+          MultiplicationSignLiteral:
+            Pattern: MultiplicationSignChar
+          DivisionSignLiteral:
+            Pattern: DivisionSignChar
+          ModuloSignLiteral:
+            Pattern: ModuloSignChar
+          EqualsSignLiteral:
+            Pattern: EqualsSignChar
+          BitwiseXORLiteral:
+            Pattern: BitwiseXORChar
+          TildeLiteral:
+            Pattern: TildeChar
+          LessThanSignLiteral:
+            Pattern: LessThanSignChar
+          GreaterThanSignLiteral:
+            Pattern: GreaterThanSignChar
+          LogicalNOTLiteral:
+            Pattern: LogicalNOTChar
+          LogicalANDLiteral:
+            Pattern: LogicalANDChar
+          LogicalORLiteral:
+            Pattern: LogicalORChar
+        
+          # Compound Literals
+          PlusEqualsSignLiteral:
+            Pattern: [PlusSignLiteral, EqualsSignLiteral]
+          MinusEqualsSignLiteral:
+            Pattern: [MinusSignLiteral, EqualsSignLiteral]
+          MultiplyEqualsSignLiteral:
+            Pattern: [MultiplicationSignLiteral, EqualsSignLiteral]
+          DivideEqualsSignLiteral:
+            Pattern: [DivisionSignLiteral, EqualsSignLiteral]
+          ModuloEqualsSignLiteral:
+            Pattern: [ModuloSignLiteral, EqualsSignLiteral]
+          LeftShiftLiteral:
+            Pattern: [LessThanSignLiteral, LessThanSignLiteral]
+          RightShiftLiteral:
+            Pattern: [GreaterThanSignLiteral, GreaterThanSignLiteral]
+          DoubleEqualsSignLiteral:
+            Pattern: [EqualsSignLiteral, EqualsSignLiteral]
+          NotEqualsSignLiteral:
+            Pattern: [LogicalNOTLiteral, EqualsSignLiteral]
+          LessThanOrEqualsLiteral:
+            Pattern: [LessThanSignLiteral, EqualsSignLiteral]
+          GreaterThanOrEqualsLiteral:
+            Pattern: [GreaterThanSignLiteral, EqualsSignLiteral]
+          LogicalANDCompoundLiteral:
+            Pattern: [LogicalANDLiteral, LogicalANDLiteral]
+          LogicalORCompoundLiteral:
+            Pattern: [LogicalORLiteral, LogicalORLiteral]
+      
+      StringLiteral:
+        Pattern: [QuotationMarkChar, NotAnyOfType(QuotationMarkChar) , QuotationMarkChar]
+      NumberLiteral:
+        IntegerLiteral:
+          Pattern: OnOrMoreOfType(NumberChar)
+        FloatLiteral:
+          Pattern: [IntegerLiteral, PeriodChar, IntegerLiteral]
+      
+      
+      
+      WordLiteral:
+        Pattern: OneOrMoreOfType(LetterChar)
+        
+        LetterCharSequenceLiteral:  
+          
+            
+          BooleanLiteral:
+            TrueLiteral:
+              Pattern: [LowerT, LowerR, LowerU, LowerE]
+            FalseLiteral:
+              Pattern: [LowerF, LowerA, LowerL, LowerS, LowerE]
+              
+          NullLiteral:
+            Pattern: [LowerN, LowerU, LowerL, LowerL]
+        
+    CharLiteral:
+      LetterChar:
+        LetterA:
+          Pattern: UpperA || LowerA
+        LetterB:
+          Pattern: UpperB || LowerB
+        LetterC:
+          Pattern: UpperC || LowerC
+        LetterD:
+          Pattern: UpperD || LowerD
+        LetterE:
+          Pattern: UpperE || LowerE
+        LetterF:
+          Pattern: UpperF || LowerF
+        LetterG:
+          Pattern: UpperG || LowerG
+        LetterH:
+          Pattern: UpperH || LowerH
+        LetterI:
+          Pattern: UpperI || LowerI
+        LetterJ:
+          Pattern: UpperJ || LowerJ
+        LetterK:
+          Pattern: UpperK || LowerK
+        LetterL:
+          Pattern: UpperL || LowerL
+        LetterM:
+          Pattern: UpperM || LowerM
+        LetterN:
+          Pattern: UpperN || LowerN
+        LetterO:
+          Pattern: UpperO || LowerO
+        LetterP:
+          Pattern: UpperP || LowerP
+        LetterQ:
+          Pattern: UpperQ || LowerQ
+        LetterR:
+          Pattern: UpperR || LowerR
+        LetterS:
+          Pattern: UpperS || LowerS
+        LetterT:
+          Pattern: UpperT || LowerT
+        LetterU:
+          Pattern: UpperU || LowerU
+        LetterV:
+          Pattern: UpperV || LowerV
+        LetterW:
+          Pattern: UpperW || LowerW
+        LetterX:
+          Pattern: UpperX || LowerX
+        LetterY:
+          Pattern: UpperY || LowerY
+        LetterZ:
+          Pattern: UpperZ || LowerZ
+        UppercaseLetterChar:
+          - UpperA: "A"
+          - UpperB: "B"
+          - UpperC: "C"
+          - UpperD: "D"
+          - UpperE: "E"
+          - UpperF: "F"
+          - UpperG: "G"
+          - UpperH: "H"
+          - UpperI: "I"
+          - UpperJ: "J"
+          - UpperK: "K"
+          - UpperL: "L"
+          - UpperM: "M"
+          - UpperN: "N"
+          - UpperO: "O"
+          - UpperP: "P"
+          - UpperQ: "Q"
+          - UpperR: "R"
+          - UpperS: "S"
+          - UpperT: "T"
+          - UpperU: "U"
+          - UpperV: "V"
+          - UpperW: "W"
+          - UpperX: "X"
+          - UpperY: "Y"
+          - UpperZ: "Z"
+        LowercaseLetterChar:
+          - LowerA: "a"
+          - LowerB: "b"
+          - LowerC: "c"
+          - LowerD: "d"
+          - LowerE: "e"
+          - LowerF: "f"
+          - LowerG: "g"
+          - LowerH: "h"
+          - LowerI: "i"
+          - LowerJ: "j"
+          - LowerK: "k"
+          - LowerL: "l"
+          - LowerM: "m"
+          - LowerN: "n"
+          - LowerO: "o"
+          - LowerP: "p"
+          - LowerQ: "q"
+          - LowerR: "r"
+          - LowerS: "s"
+          - LowerT: "t"
+          - LowerU: "u"
+          - LowerV: "v"
+          - LowerW: "w"
+          - LowerX: "x"
+          - LowerY: "y"
+          - LowerZ: "z"
+
+        TitlecaseLetterChar:
+          ǅ ǲ Ǳ ...
+        ModifierLetterChar:
+          ʰ ʿ ˈ ...
+        OtherLetterChar:
+          𐓐 𐓓 𐓘 ...
+        
+      MarkChar:
+        NonSpacingMarkChar:
+          ◌́ ◌̀ ◌̃ ...
+        SpacingCombiningMarkChar:
+          ◌̄ ◌̆ ◌̈ ...
+        EnclosingMarkChar:
+          ◌⃝ ◌⃞ ◌⃤ ...
+          
+      NumberChar:
+        DecimalDigitNumberChar:
+          1 2 3 ...
+        LetterNumberChar:
+          Ⅰ Ⅷ Ⅽ ...
+        OtherNumberChar:
+          ↀ ⓵ ⑩ ...
+          
+      SeparatorChar:
+        SpaceSeparatorChar:
+          U+0020 U+00A0 U+1680 ...
+        LineSeparatorChar:
+          U+2028 \u2028 \n ...
+        ParagraphSeparatorChar:
+          U+2029 \u2029 \x2029 ...
+        
+      SpecialChar:
+        ControlChar:
+          - NullChar: "\u0000" # Null character
+          - StartOfHeadingChar: "\u0001" # Start of heading
+          - EndOfText: "\u0003" # End of text   
+        FormatChar:
+          - ZeroWidthNonJoinerChar: U+200C # Zero Width Non-Joiner
+          - ZeroWidthJoinerChar: U+200D # Zero Width Joiner
+          - WordJoinerChar: U+2060 # Word Joiner
+        SurrogateChar:
+          - GrinningFaceEmojiChar: "\uD83D\uDE00" # Grinning Face Emoji
+          - GlobeShowingEuropeAfricaEmojiChar: "\uD83C\uDF0D" # Globe Showing Europe-Africa Emoji
+          - DogFaceEmojiChar: "\uD83D\uDC36" # Dog Face Emoji
+        PrivateUseChar:
+          - PrivateUseChar1: U+E000 # Example of a private-use character
+          - PrivateUseChar2: U+F8FF # Example of another private-use character
+          - PrivateUseChar3: U+10FFFF # Example of a private-use character from Supplementary Private Use Area-B
+      PunctuationChar:
+        ConnectorPunctuationChar:
+          - UnderscoreChar: "_"
+          - HebrewPunctuationMaqqefChar: "־"
+          - UndertieChar: "‿"
+        DashPunctuationChar:
+          - HyphenMinusChar: "-"
+          - EnDashChar: "–"
+          - EmDashChar: "—"
+        OpenPunctuationChar:
+          - LeftParenthesisChar: "("
+          - LeftSquareBracketChar: "["
+          - LeftCurlyBraceChar: "{"
+        ClosePunctuationChar:
+          - RightParenthesisChar: ")"
+          - RightSquareBracketChar: "]"
+          - RightCurlyBraceChar: "}"
+        InitialQuotePunctuationChar:
+          - LeftDoubleQuotationMarkChar: "“"
+          - LeftSingleQuotationMarkChar: "‘"
+          - ReversedDoublePrimeQuotationMarkChar: "‶"
+        FinalQuotePunctuationChar:
+          - RightDoubleQuotationMarkChar: "”"
+          - RightSingleQuotationMarkChar: "’"
+          - DoublePrimeQuotationMarkChar: "″"
+        OtherPunctuationChar:
+          - ExclamationMarkChar: "!"
+          - QuestionMarkChar: "?"
+          - PeriodChar: "."
+          - QuotationMarkChar: '"'	# U+0022
+          - ApostropheChar: "'"	# U+0027
+      SymbolChar:
+        MathSymbolChar:
+          - PlusSignChar: "+"
+          - MinusSignChar: "-"
+          - MultiplicationSignChar: "×"
+          - DivisionSignChar: "÷"
+        CurrencySymbolChar:
+          - DollarSignChar: "$"
+          - EuroSignChar: "€"
+          - PoundSignChar: "£"
+          - YenSignChar: "¥"
+        ModifierSymbolChar:
+          - CircumflexAccentChar: "^"
+          - AcuteAccentChar: "´"
+          - GraveAccentChar: "`"
+          - TildeChar: "~"
+        OtherSymbolChar:
+          - AtSignChar: "@"
+          - HashSignChar: "#"
+          - AmpersandChar: "&"
+          - PercentSignChar: "%"
+      OtherNotAssignedChar:

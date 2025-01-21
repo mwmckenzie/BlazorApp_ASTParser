@@ -1,0 +1,31 @@
+﻿@using MudBlazor
+
+
+<MudElement HtmlTag=@htmlTagText
+            Class=@classText
+            Style=@styleAttribText
+            href=@htmlHrefText
+            target="blank"
+            rel="noopener noreferrer">
+    @text
+</MudElement>
+
+@code {
+
+    [Parameter]
+    public string text { get; set; } = "";
+
+    [Parameter]
+    public string classText { get; set; } = "ms-0";
+    
+    [Parameter]
+    public string styleAttribText { get; set; } = "color: black; background-color: white";
+    
+    [Parameter]
+    public string htmlHrefText { get; set; } = "";
+    
+    [Parameter]
+    public string htmlTagText { get; set; } = "a";
+
+
+}
